@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Confidential Freelancer Bidding Platform Design System
+Professional marketplace with blockchain security and sealed envelope metaphors
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors - Clean professional palette */
+    --background: 248 250 252;
+    --foreground: 215.4 16.3% 26.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215.4 16.3% 26.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215.4 16.3% 26.9%;
+
+    /* Primary - Professional blue for trust and reliability */
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 217.2 91.2% 70%;
+    --primary-dark: 217.2 91.2% 45%;
+
+    /* Secondary - Subtle grays for balance */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 215.4 16.3% 46.9%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent - Trust green for security elements */
+    --accent: 142.1 76.2% 36.3%;
+    --accent-foreground: 0 0% 98%;
+    --accent-light: 142.1 70% 45%;
+
+    /* Status colors */
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38.4 92.2% 50.2%;
+    --warning-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* UI Elements */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217.2 91.2% 59.8%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217.2 91.2% 59.8%), hsl(217.2 91.2% 45%));
+    --gradient-success: linear-gradient(135deg, hsl(142.1 76.2% 36.3%), hsl(142.1 70% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(217.2 91.2% 59.8%) 0%, hsl(142.1 76.2% 36.3%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(215.4 16.3% 26.9% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(215.4 16.3% 26.9% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(215.4 16.3% 26.9% / 0.1);
+    --shadow-glow: 0 0 20px hsl(217.2 91.2% 59.8% / 0.4);
+
+    /* Animations and Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Component Utilities */
+  .envelope-sealed {
+    @apply relative bg-gradient-to-br from-white to-gray-50 border-2 border-dashed border-primary/30 rounded-lg;
+    background-image: 
+      linear-gradient(45deg, transparent 24%, hsl(217.2 91.2% 59.8% / 0.1) 25%, hsl(217.2 91.2% 59.8% / 0.1) 26%, transparent 27%),
+      linear-gradient(-45deg, transparent 74%, hsl(217.2 91.2% 59.8% / 0.1) 75%, hsl(217.2 91.2% 59.8% / 0.1) 76%, transparent 77%);
+    background-size: 20px 20px;
+  }
+
+  .envelope-sealed::before {
+    content: '🔒';
+    @apply absolute top-2 right-2 text-accent opacity-60;
+  }
+
+  .wallet-connect-btn {
+    @apply bg-gradient-to-r from-primary to-accent text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-glow hover:scale-105;
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .bid-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20;
+  }
+
+  .sealed-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20;
+  }
+
+  /* Animation keyframes */
+  @keyframes envelope-seal {
+    0% { transform: translateY(-10px) rotate(-5deg); opacity: 0; }
+    50% { transform: translateY(-5px) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(217.2 91.2% 59.8% / 0.3); }
+    50% { box-shadow: 0 0 30px hsl(217.2 91.2% 59.8% / 0.6); }
+  }
+
+  .animate-envelope-seal {
+    animation: envelope-seal 0.6s ease-out;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
