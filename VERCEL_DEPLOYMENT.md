@@ -30,10 +30,14 @@ Add the following environment variables in Vercel dashboard:
 
 ```
 VITE_CHAIN_ID=11155111
-VITE_RPC_URL=https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990
-VITE_WALLET_CONNECT_PROJECT_ID=2ec9743d0d0cd7fb94dee1a7e6d33475
-VITE_INFURA_API_KEY=b18fb7e6ca7045ac83c41157ab93f990
+VITE_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
+VITE_WALLET_CONNECT_PROJECT_ID=YOUR_WALLET_CONNECT_PROJECT_ID
+VITE_INFURA_API_KEY=YOUR_INFURA_API_KEY
 ```
+
+**Note**: Replace the placeholder values with your actual API keys:
+- Get Infura API key from [infura.io](https://infura.io)
+- Get WalletConnect Project ID from [cloud.walletconnect.com](https://cloud.walletconnect.com)
 
 **How to add environment variables:**
 1. In your Vercel project dashboard, go to "Settings"
